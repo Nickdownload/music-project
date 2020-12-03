@@ -1,9 +1,14 @@
 import Discover from '@/pages/discover'
 import Friend from '@/pages/friend'
 import Mine from '@/pages/mine'
-const router=[
+const routes=[
     {
       path:'/',
+      exact:true,
+      component:Discover
+    },
+    {
+      path:'/discover',
       exact:true,
       component:Discover
     },
@@ -17,4 +22,4 @@ const router=[
       },
 ]
 
-export default router
+export default routes
