@@ -4,6 +4,7 @@ import App from './App';
 import '@/assets/css/reset.css'
 //andt css
 import 'antd/dist/antd.css';
+
 ReactDOM.render(
    <App />,
   document.getElementById('root')

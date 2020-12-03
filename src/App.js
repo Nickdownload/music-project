@@ -1,4 +1,6 @@
+
 import {HashRouter} from 'react-router-dom'
+
 import {renderRoutes} from 'react-router-config'
 import routes from './router'
 import NKHeader from './components/app-header'
