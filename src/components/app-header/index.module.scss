@@ -21,10 +21,10 @@
                     text-decoration: none;
                     color:$color-header; 
                     &.selected{
-                      color:balck;
+                      color:black;
                     }  
                     .cor{
-                    //   z-index: 999;
+                      z-index: 999;
                     //   display: inline-block;
                     //   position: absolute;
                     //   bottom:0;
@@ -33,15 +33,15 @@
                     //   height: 7px;
                     //   background-image: url('../../assets/img/sprite_01.png');
                     //   background-position: -280px 0;   
-                     display: block;
-                     position: absolute;
-                     bottom:0px;
-                     left:50%;
-                     width: 0;
-                     height: 0;
-                     transform: translateX(-50%);
-                     border:8px solid #61dafb;
-                     border-color: transparent transparent #61dafb transparent; 
+                    //  display: none;
+                    //  position: absolute;
+                    //  bottom:0px;
+                    //  left:50%;
+                    //  width: 0;
+                    //  height: 0;
+                    //  transform: translateX(-50%);
+                    //  border:8px solid #61dafb;
+                    //  border-color: transparent transparent #61dafb transparent; 
                     }           
                 }
             }
@@ -72,7 +72,7 @@
         }
     }
     .subnav{
-        background-color: #61dafb;
+        background-color:$sub-color;
         height: 5px;
     }
 }

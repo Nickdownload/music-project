@@ -1,5 +1,5 @@
 import styled from './index.module.scss'
-import {Fragment} from 'react'
+import {Fragment,memo} from 'react'
 import {footerLinks,footerImages} from '@/services/local-data'
 function NKFooter(){
     return (
@@ -43,7 +43,7 @@ function NKFooter(){
               {
                   footerImages.map((item,index)=>{
                       return(
-                          <div key={item.title} className={styled.linkItem}>
+                          <div key={item.link} className={styled.linkItem}>
                               <a className={styled.link} href={item.link} rel="noopener noreferrer" target="_blank"> </a>
                               <span className={styled.title}>开心</span>
                           </div>
@@ -56,4 +56,4 @@ function NKFooter(){
     )
 }
 
-export default NKFooter
+export default memo(NKFooter)

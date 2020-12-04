@@ -1,3 +1,4 @@
+import {memo} from 'react'
 import styled from './index.module.scss'
 import {NavLink} from 'react-router-dom'
 import {headerLinks} from '@/services/local-data'
@@ -7,7 +8,7 @@ function listItem(item,index){
     if(index<3){
       return (<NavLink activeClassName="selected" to={item.link}>
           {item.title}
-            <i className={styled.cor}></i>
+            <i className={styled.cor + ' three'}></i>
           </NavLink>)
      }else{
      return <a target="_blank" rel="noopener noreferrer" href={item.link}>{item.title}</a>
@@ -40,4 +41,4 @@ function NKHeader(){
     )
 }
 
-export default NKHeader
+export default memo(NKHeader)

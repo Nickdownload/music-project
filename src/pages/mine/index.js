@@ -1,3 +1,4 @@
+import {memo} from 'react'
 function NkMine(){
     return(
         <div>
@@ -6,4 +7,4 @@ function NkMine(){
     ) 
 }
 
-export default NkMine
+export default memo(NkMine)

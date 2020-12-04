@@ -1,0 +1,22 @@
+
+.wapper{
+
+}
+.topMenu{
+    background-color: $sub-color;
+    .menuList{
+        padding-left:160px;
+        display: flex;
+        .linkItem{
+           a{
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 13px;
+            margin: 0px 17px 3px;
+            color: #fff;
+           }
+        }
+        
+    }
+}

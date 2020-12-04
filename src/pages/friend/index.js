@@ -1,5 +1,5 @@
 
-
+import {memo} from 'react'
 
 function NkFriend(){
     return(
@@ -9,4 +9,4 @@ function NkFriend(){
     ) 
 }
 
-export default NkFriend
+export default memo(NkFriend)
