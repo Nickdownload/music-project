@@ -1,0 +1,96 @@
+.wrapper{
+    display: flex;
+    width: 230px;
+    flex-direction: column;
+    .header{
+        padding-top:20px;
+        padding-left: 20px;
+        height: 120px;
+        display: flex;
+        .imgbox{
+           width: 80px;
+           height: 80px;
+           position: relative;  
+        }
+        .title{
+            margin-left:10px;
+            margin-top:6px;
+        }
+        .btns{
+              .play {
+                display: inline-block;
+                text-indent: -9999px;
+                width: 22px;
+                height: 22px;
+                margin: 8px 10px 0 0;
+                cursor: pointer;
+                background-position: -267px -205px;
+              }
+              .favor {
+                display: inline-block;
+                text-indent: -9999px;
+                width: 22px;
+                height: 22px;
+                margin: 8px 10px 0 0;
+                cursor: pointer;
+                background-position: -300px -205px;
+              }
+        }
+    }
+    .itemList{
+       .item{
+           height: 32px;
+           padding-left:30px;
+           line-height: 32px;
+           display: flex;
+           width: 230px;
+           justify-content: space-between; 
+           &:nth-child(-n+3) .span{
+               color:red;
+           }
+           &:hover .operate{
+              display: flex;
+           }
+           .title{
+               flex:1
+           }
+           .span{
+               display:inline-block;
+               line-height: 32px;
+               width:23px;
+           }
+           .operate {
+            align-items: center;
+            display: none;
+            width: 82px;
+            .play {
+                width: 17px;
+                height: 17px;
+                margin-left: 8px;
+                cursor: pointer;
+                background-position: -267px -268px;
+              }
+              .addto {
+                width: 17px;
+                height: 17px;
+                margin-left: 8px;
+                cursor: pointer;
+                position: relative;
+                background-position: -297px -268px;
+              }
+              .favor {
+                width: 17px;
+                height: 17px;
+                margin-left: 8px;
+                cursor: pointer;
+                background-position: -297px -268px;
+              }
+           }
+       }
+    }
+
+    .more{
+       display: flex;
+       justify-content: flex-end;
+    }
+}

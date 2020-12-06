@@ -1,0 +1,15 @@
+.wrap{
+   
+.content{
+    display: flex;
+    flex-direction: row;
+    .left{
+        flex-basis: 730px;
+        padding:20px 20px 40px;
+        box-sizing: border-box;
+    }
+    .right{
+        flex:1
+    }
+ }
+}

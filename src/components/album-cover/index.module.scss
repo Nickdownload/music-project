@@ -1,0 +1,23 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    .imgBox{
+        position: relative;
+        padding-right:16px;
+    }
+    .go{
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        background-position: 0 -570px;
+    }
+}
+.company{
+    width: 108px;
+}
+.name{
+    font-size :12px;
+    color:#666;
+}

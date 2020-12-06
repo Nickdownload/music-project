@@ -1,0 +1,40 @@
+.disk{
+    margin:20px 0 37px;
+}
+.content{
+    height: 184px;
+    padding-left: 16px;
+    background: #f5f5f5;
+    border: 1px solid #fff;
+    display: flex;
+    position: relative;
+    .pictrue{
+      width: 655px;
+      height: 182px;
+      padding:0 6px;
+    }
+    .leftBtn{
+      width: 25px;
+      height: 17px;
+      background-position: -260px -75px;
+      position: absolute;
+      left: 4px;
+      top:50%;
+      cursor: pointer;
+    }
+    .rightBtn{
+      width: 25px;
+      height: 17px;
+      background-position: -300px -75px;
+      position: absolute;
+      right: 0;
+      top:50%;
+      cursor: pointer;
+    }
+}
+.item{
+  height: 180px;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}

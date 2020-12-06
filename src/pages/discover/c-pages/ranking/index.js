@@ -1,7 +1,7 @@
-import {memo} from 'react'
-
+import {memo,} from 'react'
 
 function Ranking(){
+   
     return (
         <div>
             Ranking
