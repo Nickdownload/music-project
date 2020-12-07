@@ -13,8 +13,6 @@ function NKNewAlbum(props) {
    const {newAlbum} = useSelector(store=>({
        newAlbum:store.getIn(['recommend','newAlbum'])
    }),shallowEqual)
-   console.log(newAlbum)
-   console.log(newAlbum.slice(0,5))
     useEffect(()=>{
       dispathc(FetchNewAlbumsData(10))
       

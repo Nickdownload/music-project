@@ -5,7 +5,6 @@ import styled from './index.module.scss'
 function NKTopRank(props) {
     const { info } = props
     const { tracks = [] } = info
-    console.log(info)
     return (
         <div className={styled.wrapper}>
             <div className={styled.header}>

@@ -1,0 +1,115 @@
+.wrapper{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 53px;
+    background: url('../../assets/img/playbar_sprite.png') repeat 0 0;
+}
+.content{
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    // position: absolute;
+    // left: 50%;
+    // transform: translateX(-50%);
+    // bottom: 0;
+    height: 53px;
+    .left{
+        display: flex;
+        width: 137px;
+        align-items: center;
+        .prev, .next {
+            width: 28px;
+            height: 28px;
+          }
+        
+          .prev {
+            background-position: 0 -130px;
+          }
+        
+          .play {
+            width: 36px;
+            height: 36px;
+            margin: 0 8px;
+            // background-position: 0 ${props => props.isPlaying ? "-165px": "-204px"};
+          }
+        
+          .next {
+            background-position: -80px -130px;
+          }
+    }
+    .center{
+        width: 608px;   
+        display: flex;
+        align-items: center;
+        color: white;
+        .pic{
+            width: 34px;
+            height: 34px;
+            position: relative;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+            a {
+                position: absolute;
+                top:0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+            }
+        }
+        .slider{
+            width: 493px;
+        }
+    }
+    .right{
+        display: flex;
+        position: relative;
+        margin-left:20px;
+        .leftBt{
+            .favor{
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                background-position: -88px -163px;  
+            }
+            .share{
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                background-position: -114px -163px;
+            }
+        }
+        .rightBt{
+            display: flex;
+            align-items: center;
+            width: 126px;
+            padding-left: 13px;
+            background-position: -147px -248px;  
+            .volume{
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                background-position: -2px -248px;
+            }
+            .loop{
+                display: inline-block;
+                width: 25px;
+                height: 25px; 
+                background-position: -3px -344px;
+            }
+            .playlist{
+                display: inline-block;
+                width: 25px;
+                height: 25px; 
+                padding-left: 18px;
+                text-align: center;
+                color: #ccc;
+                width: 59px;
+                background-position: -42px -68px;
+            }
+        }
+    }
+}
