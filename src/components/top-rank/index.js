@@ -1,10 +1,16 @@
 import { memo } from 'react'
-
+import {useDispatch } from 'react-redux'
+import { addToLoveList } from "@/pages/player/store/actionCreator";
 import { getImageSize } from '@/utils/format-utils'
 import styled from './index.module.scss'
 function NKTopRank(props) {
     const { info } = props
     const { tracks = [] } = info
+    const dispatch =useDispatch()
+    function add(item){
+       dispatch(addToLoveList(item.id))
+    }
+
     return (
         <div className={styled.wrapper}>
             <div className={styled.header}>
@@ -27,7 +33,7 @@ function NKTopRank(props) {
                             <div className={styled.title + ' text-nowrap'}><span className={styled.span}>{index + 1}</span>  {item.name}</div>
                             <div className={styled.operate}>
                                 <div className={styled.play+ ' sprite_02'}></div>
-                                <div className={styled.addto+ ' sprite_02'} ></div>
+                                <div onClick={e=>add(item)} className={styled.addto+ ' sprite_02'} ></div>
                                 <div className={styled.favor+ ' sprite_02'}></div>
                             </div>
                         </div>

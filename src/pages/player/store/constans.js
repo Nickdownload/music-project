@@ -1,1 +1,3 @@
 export const CURRENTSONG = 'CURRENTSONG'
+export const CHANGEINDEX = 'CHANGEINDEX'
+export const GETLOVELIST = 'GETLOVELIST'

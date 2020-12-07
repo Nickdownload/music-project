@@ -10,6 +10,8 @@ import {
 import { Slider } from 'antd';
 function NKPlayer(){
     const [playNow,setPlayNow] = useState(false)
+    const [flag,setFlag] =useState(true)
+    const [progress,setProgress] = useState(0)
     const [currentTime,setCurrentTime] = useState(0)
     const dispatch = useDispatch()
     const audioRef = useRef()
@@ -42,10 +44,33 @@ function NKPlayer(){
         }
     }
     function timeUpdate(e){
-        console.log(currentTime)
-        setCurrentTime(e.target.currentTime*1000)
+        if(flag){
+            setCurrentTime(e.target.currentTime*1000)
+            var newProgress = Math.floor((e.target.currentTime*1000/currentSong.dt)*100)
+            setProgress(newProgress)
+        } 
     }
-   
+    
+    function musicPlay(timer){
+        setCurrentTime(timer)
+        var newProgress = Math.floor((timer/currentSong.dt)*100)
+        setProgress(newProgress)
+    }
+
+    function changeHandle(e){
+        setFlag(false)
+        setProgress(e)
+        setPlayNow(true)
+    }
+    
+    function afterChange(e){
+        var time = (e/100)*currentSong.dt
+        musicPlay(time)
+        audioRef.current.currentTime=(time/1000)
+        audioRef.current.play()
+        setFlag(true)
+    }
+
    const picUrl = (currentSong.al && currentSong.al.picUrl) || 'http://s4.music.126.net/style/web2/img/default/default_album.jpg'
 
     return(
@@ -62,7 +87,7 @@ function NKPlayer(){
                      <a href="c" >  </a>
                  </div>
                 <div className={styled.slider}>
-                  <Slider defaultValue={30} />
+                  <Slider defaultValue={0} value={progress} onAfterChange={afterChange} onChange={changeHandle} />
                 </div>
                 <div className={styled.timer}>
                    <span>{formatMinuteSecond(currentTime)}</span>
