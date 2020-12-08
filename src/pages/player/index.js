@@ -1,7 +1,7 @@
 import {memo,useState,useEffect,useRef} from 'react'
 import { shallowEqual, useDispatch, useSelector} from 'react-redux'
 import styled from './index.module.scss'
-import {fetchSongDetail} from './store/actionCreator'
+import {fetchSongDetail,updownSong} from './store/actionCreator'
 import { 
     getPlayUrl,
     getImageSize,
@@ -71,15 +71,21 @@ function NKPlayer(){
         setFlag(true)
     }
 
+
+    //prevSong
+     function upOrdownSong(num){
+           dispatch(updownSong(num))
+     }
+
    const picUrl = (currentSong.al && currentSong.al.picUrl) || 'http://s4.music.126.net/style/web2/img/default/default_album.jpg'
 
     return(
         <div className={styled.wrapper}>
             <div className={styled.content+ ' wrap-v2'}>
              <div className={styled.left}>
-               <span className={styled.prev + ' sprite_playbar'}></span>
+               <span onClick={()=>{upOrdownSong(-1)}} className={styled.prev + ' sprite_playbar'}></span>
                <span onClick={e=>{isPlay(e)}} style={{backgroundPosition:`${getPostition()}`}} className={styled.play + ' sprite_playbar'} ></span>
-               <span className={styled.next + ' sprite_playbar'}></span>
+               <span onClick={()=>{upOrdownSong(1)}} className={styled.next + ' sprite_playbar'}></span>
              </div>
              <div className={styled.center}>
                  <div className={styled.pic}>
