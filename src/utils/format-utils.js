@@ -44,5 +44,6 @@ export function getPlayUrl(id) {
   }
   
   export function formatMinuteSecond(time) {
-    return formatDate(time, "mm:ss");
+    var timer = time || 0
+    return formatDate(timer, "mm:ss");
   }

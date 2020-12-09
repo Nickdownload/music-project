@@ -1,0 +1,10 @@
+.wrapper{
+   height: 300px;
+   width: 986px; 
+   position: absolute;
+   bottom:47px;
+   left:50%;
+   transform: translateX(-50%);
+   background-color: $sub-color;
+   z-index:998
+}

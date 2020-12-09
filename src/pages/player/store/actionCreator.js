@@ -1,5 +1,5 @@
 import {getSongDetail} from '@/services/player'
-import  {CURRENTSONG,CHANGEINDEX,GETLOVELIST} from './constans'
+import  {CURRENTSONG,CHANGEINDEX,GETLOVELIST,CHANGEMODE} from './constans'
 
 
 export const fetchSongDetail=(ids)=>{
@@ -50,6 +50,36 @@ const getCurrentSong = (currentSong)=>({
 export const updownSong=(num)=>{
     return (dispatch,getStore)=>{
         const loveSongs=getStore().getIn(['palyer','loveSongs'])
-        const currentSongIndex = getStore().getIn(['palyer','currentSongIndex'])       
+        const currentSongIndex = getStore().getIn(['palyer','currentSongIndex'])
+        const sequence = getStore().getIn(['palyer','sequence'])
+        var nextIndex 
+        if(loveSongs.length===0){
+            return
+        }
+        console.log(currentSongIndex)
+        if(sequence===1){
+            var n =Math.floor(Math.random()*(loveSongs.length))
+            if(loveSongs.length>1){
+                while(currentSongIndex===n){
+                   n =Math.floor(Math.random()*(loveSongs.length)) 
+                } 
+            }
+            nextIndex=n
+        }else{
+            nextIndex  =currentSongIndex+num
+        }
+        
+        if(nextIndex<0){
+            nextIndex=loveSongs.length-1
+        }else if(nextIndex>loveSongs.length-1){
+            nextIndex=0
+        }
+        dispatch(getCurrentSong(loveSongs[nextIndex])) 
+        dispatch(changeCurrentSongIndex(nextIndex)) 
     }
 }
+
+export const changeCurrentMode=(sequence)=>({
+    type:CHANGEMODE,
+    sequence
+})

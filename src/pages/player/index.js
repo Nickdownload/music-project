@@ -1,13 +1,21 @@
 import {memo,useState,useEffect,useRef} from 'react'
 import { shallowEqual, useDispatch, useSelector} from 'react-redux'
 import styled from './index.module.scss'
-import {fetchSongDetail,updownSong} from './store/actionCreator'
+import {
+    fetchSongDetail,
+    updownSong,
+    changeCurrentMode
+} from './store/actionCreator'
 import { 
     getPlayUrl,
     getImageSize,
     formatMinuteSecond
 } from '@/utils/format-utils';
+
 import { Slider } from 'antd';
+import NKAppPlane from './c-cpns/app-plane'
+
+
 function NKPlayer(){
     const [playNow,setPlayNow] = useState(false)
     const [flag,setFlag] =useState(true)
@@ -15,15 +23,22 @@ function NKPlayer(){
     const [currentTime,setCurrentTime] = useState(0)
     const dispatch = useDispatch()
     const audioRef = useRef()
-    const {currentSong} = useSelector(store=>({
-        currentSong:store.getIn(['palyer','currentSong'])
+    const {currentSong,smode,loveSongs} = useSelector(store=>({
+        currentSong:store.getIn(['palyer','currentSong']),
+        smode:store.getIn(['palyer','sequence']),
+        loveSongs:store.getIn(['palyer','loveSongs'])
     }),shallowEqual)
     useEffect(()=>{
         dispatch(fetchSongDetail(191469))
     },[dispatch])
 
     useEffect(()=>{
-        audioRef.current.src=getPlayUrl(currentSong.id)
+        audioRef.current.src=getPlayUrl(currentSong.id)  || ''
+        audioRef.current.play().then(res => {
+            setPlayNow(true)
+          }).catch(err => {
+            setPlayNow(false)
+          });
     },[currentSong])
 
     function isPlay(){
@@ -76,6 +91,37 @@ function NKPlayer(){
      function upOrdownSong(num){
            dispatch(updownSong(num))
      }
+   
+     function handleMusicEnded(){
+        if(smode===2){
+            audioRef.current.currentTime=0
+            audioRef.current.play()            
+        }else{
+            dispatch(updownSong(1))
+        }
+        
+     }
+     //更改模式
+     function changeMode(){
+         console.log(smode)
+         var sequence=smode+1
+         if(sequence>2){
+            sequence=0
+         }
+         console.log(sequence)
+         console.log(changeCurrentMode(sequence))
+         dispatch(changeCurrentMode(sequence))   
+     }
+
+     function modePosition(smode){
+       if(smode ===0){
+          return '-3px -344px' 
+       }else if(smode === 1){
+          return '-66px -248px'
+       }else{
+          return '-66px -344px'
+       }
+     }
 
    const picUrl = (currentSong.al && currentSong.al.picUrl) || 'http://s4.music.126.net/style/web2/img/default/default_album.jpg'
 
@@ -108,14 +154,15 @@ function NKPlayer(){
           </div>
           <div className={styled.rightBt + ' sprite_playbar'}>
             <span className={ styled.volume + ' sprite_playbar'} ></span>
-            <span className={ styled.loop + ' sprite_playbar'}  ></span>
-            <span className={ styled.playlist + ' sprite_playbar'}> 0</span>
+            <span style={{backgroundPosition:`${modePosition(smode)}`}} className={ styled.loop + ' sprite_playbar'}  onClick={e=>changeMode()} ></span>
+    <span className={ styled.playlist + ' sprite_playbar'}> {loveSongs.length}</span>
           </div>
 
 
              </div>
             </div>
-            <audio ref={audioRef} onTimeUpdate={e=>{timeUpdate(e)}} />         
+            <audio ref={audioRef} onEnded={e => handleMusicEnded()} onTimeUpdate={e=>{timeUpdate(e)}} />    
+            <NKAppPlane />     
         </div>
     )
 }
