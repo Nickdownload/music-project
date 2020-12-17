@@ -25,7 +25,7 @@ function NKNewAlbum(props) {
             <div className={styled.content}>
                  <div className={styled.leftBtn + ' sprite_02'} onClick={e=>picRef.current.prev()}></div>
              <div className={styled.pictrue}>
-               <Carousel  ref={picRef}>    
+               <Carousel dots={false} ref={picRef}>    
                   {
                     [0,1].map(item=>{
                       return (
