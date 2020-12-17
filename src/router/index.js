@@ -1,16 +1,16 @@
-import React from 'react'
+import React ,{lazy}from 'react'
 import {Redirect} from 'react-router-dom'
 import Discover from '@/pages/discover'
 //二级菜单 子路由
-import Recommend from '@/pages/discover/c-pages/recommend'
-import TopList from '@/pages/discover/c-pages/ranking'
-import Songs from '@/pages/discover/c-pages/songs'
-import Djradio from '@/pages/discover/c-pages/djradio'
-import Artist from '@/pages/discover/c-pages/artist'
-import Album from '@/pages/discover/c-pages/album'
+const Recommend = lazy(()=>import('@/pages/discover/c-pages/recommend'))
+const TopList =  lazy(()=>import('@/pages/discover/c-pages/ranking'))
+const Songs = lazy(()=>import('@/pages/discover/c-pages/songs'))
+const Djradio = lazy(()=>import('@/pages/discover/c-pages/djradio'))
+const Artist =  lazy(()=>import('@/pages/discover/c-pages/artist'))
+const Album = lazy(()=>import('@/pages/discover/c-pages/album'))
 
-import Friend from '@/pages/friend'
-import Mine from '@/pages/mine'
+const Friend =  lazy(()=>import('@/pages/friend'))
+const Mine =  lazy(()=>import('@/pages/mine'))
 const routes=[
     {
       path:'/',
